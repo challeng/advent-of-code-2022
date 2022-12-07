@@ -18,7 +18,7 @@ class Day7
     @sizes = Hash.new(0)
     dirs = {"/" => {}}
     dir_stack = []
-  
+
     File.readlines(file, chomp: true).each do |line|
       case line.split(' ')
       in ['$', 'cd', '..']
@@ -27,9 +27,7 @@ class Day7
         dir_stack << dir
       in ['$', 'ls']
       in ['dir', dir]
-        dirs.dig(*dir_stack).merge!(dir => {})
       in [size, filename]
-        dirs.dig(*dir_stack).merge!(filename => size.to_i)
         dir_stack.length.times do |n|
           @sizes[dir_stack[0..n].join('')] += size.to_i
         end
