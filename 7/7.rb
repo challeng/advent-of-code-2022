@@ -16,7 +16,6 @@ class Day7
 
   def parse_file(file)
     @sizes = Hash.new(0)
-    dirs = {"/" => {}}
     dir_stack = []
 
     File.readlines(file, chomp: true).each do |line|
